@@ -96,13 +96,20 @@ class StartScreen extends StatelessWidget {
               backgroundColor: Colors.blue.shade800,
               padding: const EdgeInsets.symmetric(horizontal: 35, vertical: 12),
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(50),
+          borderRadius: BorderRadius.circular(50),
               ),
               side: const BorderSide(color: Colors.white, width: 2),
               elevation: 3,
               shadowColor: Colors.black,
             ),
-            child: StyledText("Log In"),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+          StyledText("Connect"),
+          const SizedBox(width: 8),
+          const Icon(Icons.login, color: Colors.white),
+              ],
+            ),
           ),
         ],
       ),

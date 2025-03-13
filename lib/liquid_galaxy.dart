@@ -27,15 +27,64 @@ class _MoveToPlace extends State<LiquidGalaxy> {
         Image.asset("assets/images/LIQUIDGALAXYLOGO.png",
           width: 200, height: 200),
         const SizedBox(height: 20),
-        StyledButton("Eiffel Tower", () => flyToEiffelTowerUsingSSH(widget.username, widget.password, widget.ipAddress)),
+        StyledButton("Eiffel Tower", () => flyToEiffelTowerUsingKML(widget.username, widget.password, widget.ipAddress)),
         SizedBox(height: 16),
-        StyledButton("Taj Mahal", () => flyToTajMahalUsingSSH(widget.username, widget.password, widget.ipAddress)),
+        StyledButton("Taj Mahal", () => flyToTajMahalUsingKML(widget.username, widget.password, widget.ipAddress)),
         SizedBox(height: 16),
-        StyledButton("Statue of Liberty", () => flyToStatueOfLibertyUsingSSH(widget.username, widget.password, widget.ipAddress)),
+        StyledButton("Statue of Liberty", () => flyToStatueOfLibertyUsingKML(widget.username, widget.password, widget.ipAddress)),
         SizedBox(height: 16),
-        StyledButton("Golden Gate Bridge", () => flyToGoldenGateBridgeUsingSSH(widget.username, widget.password, widget.ipAddress)),
+        StyledButton("Golden Gate Bridge", () => flyToGoldenGateBridgeUsingKML(widget.username, widget.password, widget.ipAddress)),
+        SizedBox(height: 16),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            SizedBox(
+              width: 175,  
+              height: 40, 
+              child: ElevatedButton(
+          onPressed: () => showLogoUsingKML(widget.username, widget.password, widget.ipAddress),
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.blue,
+            foregroundColor: Colors.white,
+            padding: const EdgeInsets.all(10), 
+            textStyle: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          ),
+          child: const Text("Show Logo"),
+              ),
+            ),
+            SizedBox(
+              width: 175,  
+              height: 40, 
+              child: ElevatedButton(
+          onPressed: () => clearLogoUsingSSH(widget.username, widget.password, widget.ipAddress),
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.blue,
+            foregroundColor: Colors.white,
+            padding: const EdgeInsets.all(10), 
+            textStyle: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          ),
+          child: const Text("Clear Logos"),
+              ),
+            ),
+          ],
+        ),
+        SizedBox(height: 16),
+        SizedBox(
+          width: 175,  
+          height: 40, 
+          child: ElevatedButton(
+            onPressed: () => clearKMLSUsingSSH(widget.username, widget.password, widget.ipAddress),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.blue,
+              foregroundColor: Colors.white,
+              padding: const EdgeInsets.all(10), 
+              textStyle: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            child: const Text("Clear KMLs"),
+          ),
+        ),
         ],
-      ),
-      );
+      ) 
+    );
   }
 }
