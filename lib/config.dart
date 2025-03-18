@@ -97,35 +97,21 @@ void flyToGoldenGateBridgeUsingKML(String username, String password, String ipAd
 
 void showLogoUsingKML(String username, String password, String ipAddress) async {
   final kmlCommand = '''echo '<?xml version="1.0" encoding="UTF-8"?>
- 
 <kml xmlns="http://earth.google.com/kml/2.2">
- 
-<ScreenOverlay>
- 
-<name>LOGO</name>
- 
-<color>ffffffff</color>
-<drawOrder>99</drawOrder>
-<Icon>
- 
-<href>http://$ipAddress:81/LIQUIDGALAXYLOGO.png</href>
-
-</Icon>
- 
-<overlayXY x="0" y="1" xunits="fraction" yunits="fraction" />
- 
-<screenXY x="0" y="1" xunits="fraction" yunits="fraction" />
- 
-<rotationXY x="0" y="0" xunits="fraction" yunits="fraction" />
- 
-<rotation>0</rotation>
- 
-<size x="200" y="200" xunits="pixels" yunits="pixels" />
- 
-</ScreenOverlay>
- 
+  <ScreenOverlay>
+    <name>LOGO</name>
+    <color>ffffffff</color>
+    <drawOrder>99</drawOrder>
+    <Icon>
+      <href>http://$ipAddress:81/LIQUIDGALAXYLOGO.png</href>
+    </Icon>
+    <overlayXY x="0" y="1" xunits="fraction" yunits="fraction" />
+    <screenXY x="0" y="1" xunits="fraction" yunits="fraction" />
+    <rotationXY x="0" y="0" xunits="fraction" yunits="fraction" />
+    <rotation>0</rotation>
+    <size x="200" y="200" xunits="pixels" yunits="pixels" />
+  </ScreenOverlay>
 </kml>' > /var/www/html/kml/slave_3.kml''';
-
   await sendLGCommand(username, password, ipAddress, kmlCommand);
 }
 
