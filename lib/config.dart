@@ -97,31 +97,44 @@ void flyToGoldenGateBridgeUsingKML(String username, String password, String ipAd
 
 void showLogoUsingKML(String username, String password, String ipAddress) async {
   final kmlCommand = '''echo '<?xml version="1.0" encoding="UTF-8"?>
-<kml xmlns="http://www.opengis.net/kml/2.2">
-<Document>
-  <name>Logo Overlay</name>
-  <ScreenOverlay id="logo">
-    <name>Logo</name>
-    <Icon>
-      <href>http://$ipAddress:81/LIQUIDGALAXYLOGO.png</href>
-    </Icon>
-    <drawOrder>99</drawOrder>
-    <overlayXY x="0" y="1" xunits="fraction" yunits="fraction"/>
-    <screenXY x="0.05" y="0.95" xunits="fraction" yunits="fraction"/>
-    <size x="0.3" y="0.3" xunits="fraction" yunits="fraction"/>
-    <screens>3</screens>
-  </ScreenOverlay>
-</Document>
-</kml>' > /var/www/html/kml/overlay.kml && echo "http://$ipAddress:81/kml/overlay.kml" > /var/www/html/kmls.txt''';
+ 
+<kml xmlns="http://earth.google.com/kml/2.2">
+ 
+<ScreenOverlay>
+ 
+<name>LOGO</name>
+ 
+<color>ffffffff</color>
+<drawOrder>99</drawOrder>
+<Icon>
+ 
+<href>http://$ipAddress:81/LIQUIDGALAXYLOGO.png</href>
+
+</Icon>
+ 
+<overlayXY x="0" y="1" xunits="fraction" yunits="fraction" />
+ 
+<screenXY x="0" y="1" xunits="fraction" yunits="fraction" />
+ 
+<rotationXY x="0" y="0" xunits="fraction" yunits="fraction" />
+ 
+<rotation>0</rotation>
+ 
+<size x="200" y="200" xunits="pixels" yunits="pixels" />
+ 
+</ScreenOverlay>
+ 
+</kml>' > /var/www/html/kml/slave_3.kml''';
 
   await sendLGCommand(username, password, ipAddress, kmlCommand);
 }
 
 void clearLogoUsingSSH(String username, String password, String ipAddress) async {
-  final command = '''
-    rm -f /var/www/html/kml/overlay.kml
-    sed -i '/overlay.kml/d' /var/www/html/kmls.txt
-  ''';
+  final command ='''echo '<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+</Document>
+</kml>' > /var/www/html/kml/slave_3.kml''';
   await sendLGCommand(username, password, ipAddress, command);
 }
 
